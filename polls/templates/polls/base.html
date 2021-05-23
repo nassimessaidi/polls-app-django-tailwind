@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="stylesheet" href="{% static 'polls/css/style.min.css' %}" />
+    <title>Polls App</title>
+  </head>
+  <body>
+    <main class="max-w-3xl mx-auto px-4 flex flex-col">
+      <a
+        class="
+          flex
+          items-center
+          text-center
+          self-center
+          p-2
+          space-x-2
+          bg-gray-50
+          shadow-md
+          rounded-full
+          my-5
+          hover:bg-blue-50
+          cursor-pointer
+        "
+        href="{%url 'polls:index'%}"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-9 w-9 text-gray-800"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+          />
+        </svg>
+      </a>
+      {% block content %} {% endblock content %}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+{% extends 'polls/base.html' %} {% block content %}
+<section class="mb-5 mt-2 flex flex-col space-y-3 pb-2">
+  <h1
+    class="
+      bg-indigo-600
+      text-2xl
+      rounded-md
+      shadow-sm
+      text-white
+      p-3
+      text-center
+      font-bold
+    "
+  >
+    {{ question.question_text }}
+  </h1>
+
+  {% for choice in question.choice_set.all %}
+  <div
+    class="
+      bg-gray-50
+      rounded-md
+      shadow-md
+      text-gray-700
+      font-medium
+      p-3
+      hover:bg-blue-50
+      cursor-pointer
+      flex
+      items-center
+      justify-between
+    "
+  >
+    <h2>{{ choice.choice_text }}</h2>
+    <h2
+      class="
+        bg-blue-500 bg-opacity-30
+        text-blue-700
+        font-bold
+        text-xs
+        p-1
+        rounded-lg
+        w-14
+        text-center
+      "
+    >
+      {{ choice.votes }} vote{{choice.votes|pluralize}}
+    </h2>
+  </div>
+  {% endfor %}
+
+  <a
+    class="
+      block
+      text-center text-indigo-700
+      font-bold
+      px-4
+      py-2
+      max-w-max
+      text-sm
+      ring-indigo-600 ring-2
+      self-center
+      hover:bg-blue-50
+    "
+    href="{% url 'polls:detail' question.id %}"
+    >Vote again?</a
+  >
+  {% endblock content %}
+</section>

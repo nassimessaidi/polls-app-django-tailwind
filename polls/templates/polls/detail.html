@@ -1,18 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail</title>
-  </head>
-  <body>
-    <h1>{{question.question_text}}</h1>
+{% extends 'polls/base.html' %} {% block content %}
 
-    <ul>
-      {% for choice in question.choice_set.all %}
-      <li>{{ choice.choice_text }}</li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+<section class="mb-5 mt-2 flex flex-col space-y-3 pb-2">
+  <h1
+    class="
+      bg-indigo-600
+      text-2xl
+      rounded-md
+      shadow-sm
+      text-white
+      p-3
+      text-center
+      font-bold
+    "
+  >
+    {{ question.question_text }}
+  </h1>
+
+  {% include 'polls/feedback.html' %}
+
+  <form
+    class="flex flex-col space-y-3 text-gray-700 font-medium items-start"
+    action="{% url 'polls:vote' question.id %}"
+    method="post"
+  >
+    {% csrf_token %} {% for choice in question.choice_set.all %}
+    <div class="">
+      <input
+        type="radio"
+        name="choice"
+        id="choice{{ forloop.counter }}"
+        value="{{ choice.id }}"
+      />
+      <label class="cursor-pointer" for="choice{{ forloop.counter }}"
+        >{{ choice.choice_text }}</label
+      >
+    </div>
+    {% endfor %}
+    <input
+      class="
+        bg-indigo-600
+        px-8
+        py-2
+        text-white
+        max-w-max
+        font-semibold
+        rounded-md
+        self-center
+        cursor-pointer
+        hover:bg-indigo-500
+      "
+      type="submit"
+      value="Vote"
+    />
+  </form>
+</section>
+{% endblock content %}
