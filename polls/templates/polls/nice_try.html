@@ -1,0 +1,45 @@
+{% extends 'polls/base.html' %} {% block content %}
+<section
+  class="
+    mx-auto
+    flex flex-col
+    items-center
+    space-y-10
+    mt-10
+    md:text-6xl
+    text-gray-800
+    font-black
+    py-4
+    px-6
+    bg-gray-100
+    rounded-md
+    shadow-md
+    text-5xl
+    cursor-pointer
+  "
+>
+  <div class="p-1 flex">
+    <div class="animate-pulse">😁</div>
+    <div class="animate-pulse">😂</div>
+  </div>
+  <h1 class="p-1 hover:text-yellow-400 animate-ping">NICE TRY</h1>
+  <div class="p-1 flex">
+    <div class="animate-pulse">🤓</div>
+    <div class="animate-bounce">😎</div>
+  </div>
+</section>
+<div class="w-full text-center py-2 px-3 mt-4">
+  <h1 class="text-gray-600 font-medium text-xs">
+    Btw, This is the
+    <a
+      title="Github: Poll App Django & Tailwind"
+      class="font-extrabold capitalize hover:text-blue-800"
+      href="https://github.com/nassimessaidi/polls-app-django-tailwind"
+      target="_blank"
+      >Source code</a
+    >
+    of it if you are interested to know the admin panel route.
+  </h1>
+</div>
+
+{% endblock content %}

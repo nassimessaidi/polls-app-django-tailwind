@@ -45,6 +45,10 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 
+def joke(request):
+    return render(request, 'polls/nice_try.html')
+
+
 # function based
 """
 def index(request):
